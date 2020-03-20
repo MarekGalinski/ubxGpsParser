@@ -1,7 +1,7 @@
 import serial
 import struct
 from datetime import datetime
-tty = "/dev/cu.usbmodem143401"
+tty = "/dev/ublox"
 
 ser = serial.Serial(tty, 19200, timeout=2, xonxoff=False, rtscts=False, dsrdtr=False)
 
@@ -12,7 +12,7 @@ print("Hello UBX, let's get the data!")
 rawMessage = bytearray()
 mlcounter = 0
 
-print_hpposllh = 0
+print_hpposllh = 1
 print_velned = 1
 
 log=open("ubx_log.txt", "a")
@@ -23,11 +23,6 @@ def parse_msg():
             parse_velned()
         if rawMessage[3] == 0x14:
             parse_hpposllh()
-
-#def print_values():
-                #log.write("UBX_LOG;" + current_time + ";" + str(lat[0]) + ";" + str(lon[0]) + ";" + s
-tr(bytes_latHp) + ";" + str(bytes_lonHp) + ";" + str(hellip[0]) + ";" + str(bytes_hHp) + ";" + str(hms
-l[0]) + ";" + str(bytes_hMSLHp) + ";" + str(hAcc[0]) + ";" + str(vAcc[0]) + "\n")
 
 
 
